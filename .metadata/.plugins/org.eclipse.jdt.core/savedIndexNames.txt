@@ -1,0 +1,2 @@
+INDEX VERSION 1.129+/home/bhanu/Documents/Bhanu/Stanford University/Programming Methodology (Java)/Workspace/StanfordLectures/.metadata/.plugins/org.eclipse.jdt.core
+1412680892.index
