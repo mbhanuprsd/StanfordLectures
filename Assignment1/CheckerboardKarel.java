@@ -1,3 +1,4 @@
+
 /*
  * File: CheckerboardKarel.java
  * ----------------------------
@@ -9,8 +10,49 @@
 
 import stanford.karel.*;
 
-public class CheckerboardKarel extends SuperKarel {
+public class CheckerboardKarel extends Karel {
+	private boolean isAnotherRowPresent;
+	
+	public void run() {
+		int noOfRow = 0;
+		isAnotherRowPresent = true;
+		while (isAnotherRowPresent) {
+			boolean oddRow = noOfRow%2 == 0;
+			fillRow(oddRow);
+			moveToNextColumn(oddRow);
+			noOfRow++;
+		}
+	}
 
-	// You fill in this part
+	private void fillRow(boolean oddRow) {
+		if (frontIsBlocked() && oddRow) putBeeper();
+		while (frontIsClear()) {
+			putBeeper();
+			move();
+			if (frontIsClear()) {
+				move();
+			}
+		}
+		if (oddRow) {
+			turnLeft();
+		} else {
+			turnRight();
+		}
+	}
 
+	private void moveToNextColumn(boolean oddRow) {
+		if (frontIsClear()) {
+			move();
+			if (oddRow) turnLeft();
+			else turnRight();
+		} else {
+			isAnotherRowPresent = false;
+		}
+	}
+
+	private void turnRight() {
+		for (int i = 0; i < 3; i++) {
+			turnLeft();
+		}
+	}
 }
