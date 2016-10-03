@@ -19,7 +19,7 @@ public class CheckerboardKarel extends Karel {
 		while (isAnotherRowPresent) {
 			boolean oddRow = noOfRow%2 == 0;
 			fillRow(oddRow);
-			moveToNextColumn(oddRow);
+			moveToNextRow(oddRow);
 			noOfRow++;
 		}
 	}
@@ -40,7 +40,7 @@ public class CheckerboardKarel extends Karel {
 		}
 	}
 
-	private void moveToNextColumn(boolean oddRow) {
+	private void moveToNextRow(boolean oddRow) {
 		if (frontIsClear()) {
 			move();
 			if (oddRow) turnLeft();

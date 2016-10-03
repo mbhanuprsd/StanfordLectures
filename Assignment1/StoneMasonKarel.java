@@ -12,13 +12,13 @@ import stanford.karel.*;
 
 public class StoneMasonKarel extends Karel {
 	
-	private boolean continueRepair;
+	private boolean isColumnAvailableToRepair;
 
 	public void run() {
-		continueRepair = true;
-		while (continueRepair) {
+		isColumnAvailableToRepair = true;
+		while (isColumnAvailableToRepair) {
 			repairColumn();
-			getDown();
+			getDownTheRepairedColumn();
 			moveToNextColumn();
 		}
 	}
@@ -36,20 +36,20 @@ public class StoneMasonKarel extends Karel {
 		}
 	}
 	
-	private void getDown() {
+	private void getDownTheRepairedColumn() {
 		turnAround();
 		while (frontIsClear()) {
 			move();
 		}
 		turnLeft();
-		continueRepair = false;
+		isColumnAvailableToRepair = false;
 	}
 	
 	private void moveToNextColumn() {
 		for (int i = 0; i < 4; i++) {
 			if (frontIsClear()) {
 				move();
-				continueRepair = (i == 3);
+				isColumnAvailableToRepair = (i == 3);
 			}
 		}
 	}

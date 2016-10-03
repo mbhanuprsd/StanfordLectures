@@ -20,10 +20,13 @@ public class CollectNewspaperKarel extends Karel {
 	}
 
 	private void moveToNewspaper() {
-		move();
-		move();
+		while (frontIsClear()) {
+			move();
+		}
 		turnRight();
-		move();
+		while (leftIsBlocked()) {
+			move();
+		}
 		turnLeft();
 		move();
 	}
