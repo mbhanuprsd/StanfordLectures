@@ -12,10 +12,9 @@ import stanford.karel.*;
 
 public class StoneMasonKarel extends Karel {
 	
-	private boolean isColumnAvailableToRepair;
+	private boolean isColumnAvailableToRepair = true;
 
 	public void run() {
-		isColumnAvailableToRepair = true;
 		while (isColumnAvailableToRepair) {
 			repairColumn();
 			getDownTheRepairedColumn();
@@ -25,6 +24,9 @@ public class StoneMasonKarel extends Karel {
 	
 	private void repairColumn() {
 		turnLeft();
+		if (frontIsBlocked() && noBeepersPresent()) {
+			putBeeper();
+		}
 		while (frontIsClear()) {
 			if (noBeepersPresent()) {
 				putBeeper();
