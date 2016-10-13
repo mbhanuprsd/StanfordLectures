@@ -1,7 +1,7 @@
 import stanford.karel.Karel;
 
 public class DoubleTheBeepersKarel extends Karel {
-	
+
 	public void run() {
 		move();
 		doubleTheBeepersInPile();
@@ -10,11 +10,11 @@ public class DoubleTheBeepersKarel extends Karel {
 
 	private void doubleTheBeepersInPile() {
 		int beeperCount = countNoOfBeepersInPile();
-		for (int i = 0; i < 2*beeperCount; i++) {
+		for (int i = 0; i < 2 * beeperCount; i++) {
 			putBeeper();
 		}
 	}
-	
+
 	private int countNoOfBeepersInPile() {
 		int numberOfBeepers = 0;
 		while (beepersPresent()) {
@@ -31,8 +31,7 @@ public class DoubleTheBeepersKarel extends Karel {
 	}
 
 	private void turnAround() {
-		for (int i = 0; i < 2; i++) {
-			turnLeft();			
-		}
+		turnLeft();
+		turnLeft();
 	}
 }

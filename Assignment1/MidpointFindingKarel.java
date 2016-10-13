@@ -14,7 +14,16 @@ import stanford.karel.*;
 
 public class MidpointFindingKarel extends Karel {
 	public void run() {
-		placeBeeperInMidpoint(checkNumberOfStreets());		
+		placeBeeperInMidpoint();		
+	}
+	
+	private void placeBeeperInMidpoint() {
+		int noOfStreets = checkNumberOfStreets();
+		turnAround();
+		for (int i = 0; i < noOfStreets/2; i++) {
+			move();
+		}
+		putBeeper();
 	}
 	
 	private int checkNumberOfStreets() {
@@ -24,14 +33,6 @@ public class MidpointFindingKarel extends Karel {
 			noOfStreets++;
 		}
 		return noOfStreets;
-	}
-	
-	private void placeBeeperInMidpoint(int noOfStreets) {
-		turnAround();
-		for (int i = 0; i < noOfStreets/2; i++) {
-			move();
-		}
-		putBeeper();
 	}
 	
 	private void turnAround() {
